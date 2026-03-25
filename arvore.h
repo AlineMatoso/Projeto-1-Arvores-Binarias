@@ -1,3 +1,4 @@
+#ifndef ARVORE_H 
 #define ARVORE_H
 
 //Estruturas
@@ -32,4 +33,4 @@ No *buscar(No *raiz, int matricula);
 No *atualizar(No *raiz, int matricula);
 void listar(No *raiz);
 
-
+#endif   
