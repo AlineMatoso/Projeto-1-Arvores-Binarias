@@ -20,4 +20,12 @@ typedef struct Arvore{
     No *raiz;
 } Arvore;
 
+void inicializarArvore(Arvore *arvore);
+
+No *criarNo(Funcionario f);
+
+No *inserir(No *raiz, Funcionario f);
+
+No *buscar(No *raiz, int matricula);
+
 
