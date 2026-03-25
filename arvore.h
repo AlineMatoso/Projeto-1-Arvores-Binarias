@@ -1,4 +1,3 @@
-#ifndef ARVORE_H
 #define ARVORE_H
 
 //Estruturas
@@ -27,5 +26,10 @@ No *criarNo(Funcionario f);
 No *inserir(No *raiz, Funcionario f);
 
 No *buscar(No *raiz, int matricula);
+
+// Funcoes Aline linda
+
+No *atualizar(No *raiz, int matricula);
+void listar(No *raiz);
 
 
