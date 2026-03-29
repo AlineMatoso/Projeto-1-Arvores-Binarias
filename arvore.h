@@ -1,36 +1,44 @@
-#ifndef ARVORE_H 
+// ═══════════════════════════════════════════════════════════════
+// Árvore Binária de Funcionários
+// Sistema de Gestão de Funcionários usando Árvore Binária de Busca
+// Ordenada por CPF (ordem lexicográfica)
+// ═══════════════════════════════════════════════════════════════
+
+#ifndef ARVORE_H
 #define ARVORE_H
 
-//Estruturas
+#include "validador.h"
 
-typedef struct Funcionario{
-    int matricula;
-    char nome[100];
-    char cargo[100];
-    float salario;
+// Estrutura para armazenar dados de um funcionário
+// CPF é a chave primária (11 dígitos)
+typedef struct Funcionario {
+    char  cpf[12];          // CPF com até 11 dígitos + '\0'
+    char  nome[100];        // Nome completo do funcionário
+    char  cargo[100];       // Cargo/posição do funcionário
+    float salario;          // Salário em reais
 } Funcionario;
 
-typedef struct No{
-    Funcionario dados;
-    struct No *left;
-    struct No *right;
+// Nó da árvore binária
+// Cada nó contém dados de um funcionário e referências aos filhos
+typedef struct No {
+    Funcionario   dados;    // Dados do funcionário armazenado neste nó
+    struct No    *left;     // Filho esquerdo (CPF menor)
+    struct No    *right;    // Filho direito (CPF maior)
 } No;
 
-typedef struct Arvore{
-    No *raiz;
+// Estrutura principal da árvore
+// Mantém apenas a referência à raiz
+typedef struct Arvore {
+    No *raiz;               // Ponteiro para a raiz da árvore
 } Arvore;
 
-void inicializarArvore(Arvore *arvore);
+// ─── Funções disponíveis ───────────────────────────────────────
+void  inicializarArvore(Arvore *arvore);       // Inicializa árvore vazia
+No   *criarNo(Funcionario f);                  // Cria novo nó
+No   *inserir(No *raiz, Funcionario f);        // Insere funcionário
+No   *buscar(No *raiz, const char *cpf);       // Busca por CPF
+void  exibirFuncionario(No *no);               // Exibe dados formatados
+int   atualizar(No *raiz, const char *cpf);    // Atualiza funcionário
+void  listarEmOrdem(No *raiz);                 // Lista em ordem (in-order)
 
-No *criarNo(Funcionario f);
-
-No *inserir(No *raiz, Funcionario f);
-
-No *buscar(No *raiz, int matricula);
-
-// Funcoes Aline linda
-
-No *atualizar(No *raiz, int matricula);
-void listar(No *raiz);
-
-#endif   
+#endif
