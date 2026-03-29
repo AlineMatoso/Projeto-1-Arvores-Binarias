@@ -20,6 +20,13 @@ void lerCPF(char *cpfLimpo) {
         printf("  CPF (com ou sem pontuação): ");
         scanf(" %19s", entrada);
         limparCPF(entrada, cpfLimpo);
+
+        // Valida tamanho ANTES de qualquer outra coisa
+        if (strlen(cpfLimpo) != 11) {
+            printf("  ✗ CPF deve ter exatamente 11 dígitos!\n");
+            continue;
+        }
+
         if (validarFormatoCPF(cpfLimpo)) break;
         printf("  ✗ CPF inválido! Verifique os dígitos e tente novamente.\n");
     }
@@ -37,6 +44,12 @@ Funcionario lerFuncionario(Arvore *arvore) {
         printf("  CPF (com ou sem pontuação): ");
         scanf(" %19s", entrada);
         limparCPF(entrada, f.cpf);
+
+        // Valida tamanho ANTES de qualquer outra coisa
+        if (strlen(f.cpf) != 11) {
+            printf("  ✗ CPF deve ter exatamente 11 dígitos!\n");
+            continue;
+        }
 
         if (!validarFormatoCPF(f.cpf)) {
             printf("  ✗ CPF inválido! Verifique os dígitos e tente novamente.\n");
